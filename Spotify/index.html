@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2><i class="fab fa-spotify"></i> Spotify</h2>
+      <ul>
+        <li><i class="fas fa-home"></i> Home</li>
+        <li><i class="fas fa-search"></i> Search</li>
+        <li><i class="fas fa-book"></i> Library</li>
+      </ul>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="main">
+      <header>
+        <h1>Playlist</h1>
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" placeholder="Search for a song...">
+      </header>
+
+      <div class="playlist">
+        <ul id="songList">
+          <li data-src="songs/song1.mp3" data-cover="covers/cover1.jpg">Memory Reboot</li>
+          <li data-src="songs/song2.mp3" data-cover="covers/cover2.jpg">Lost Sky</li>
+          <li data-src="songs/song3.mp3" data-cover="covers/cover3.jpg">On and On</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <!-- Music Player -->
+  <div class="player">
+    <div class="song-info">
+      <img id="cover" src="covers/cover1.jpg" alt="Album Art">
+      <div>
+        <h3 id="songTitle">Select a Song</h3>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prev">⏮</button>
+      <button id="play">▶</button>
+      <button id="next">⏭</button>
+      <input type="range" id="progress" value="0" step="1">
+    </div>
+
+    <div class="volume">
+      <i class="fas fa-volume-up"></i>
+      <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+    </div>
+  </div>
+
+  <!-- Recently Played -->
+  <div class="main-content">
+    <h2>Recently Played</h2>
+    <div class="card show">
+      <img src="covers/cover4.jpg" alt="cover">
+      <p>My Playlist</p>
+    </div>
+    <div class="card show">
+      <img src="covers/cover5.jpg" alt="cover">
+      <p>Top Hits</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simple Search Filter
+    const searchBar = document.getElementById('searchBar');
+    const songs = document.querySelectorAll('#songList li');
+
+    searchBar.addEventListener('input', () => {
+      const query = searchBar.value.toLowerCase();
+      songs.forEach(song => {
+        song.style.display = song.textContent.toLowerCase().includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

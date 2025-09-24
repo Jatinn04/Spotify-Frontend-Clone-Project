@@ -1,0 +1,248 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #121212;
+  color: #fff;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background: #000;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #1db954;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #b3b3b3;
+  transition: color 0.3s;
+}
+
+.sidebar li:hover {
+  color: #fff;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.playlist ul {
+  list-style: none;
+  padding: 0;
+}
+
+.playlist li {
+  padding: 12px;
+  margin: 8px 0;
+  background: #282828;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.playlist li:hover {
+  background: #1db954;
+  color: #000;
+  box-shadow: 0px 0px 15px rgba(29,185,84,0.7);
+  transform: scale(1.02);
+}
+
+/* Player */
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  right: 0;
+  background: #181818;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.song-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.song-info img.playing {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 5px #1db954; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px #1db954; }
+  100% { transform: scale(1); box-shadow: 0 0 5px #1db954; }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls button {
+  background: #1db954;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.controls button:hover {
+  transform: scale(1.2) rotate(5deg);
+  background: #1ed760;
+}
+
+#progress {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 4px;
+  background: #444;
+  cursor: pointer;
+  width: 200px;
+}
+
+#progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1db954;
+  box-shadow: 0px 0px 10px #1db954;
+  cursor: grab;
+}
+
+.volume input {
+  width: 100px;
+}
+
+/* Recently Played */
+.card {
+  background: #282828;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  text-align: center;
+  transition: transform 0.3s, opacity 0.5s;
+  opacity: 0;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+ 
+#searchBar {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: #282828;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+#searchBar:focus {
+  background: #333;
+  box-shadow: 0 0 10px #1db954;
+}
+
+.main-content {
+  margin-left: 200px; /* so it doesn’t sit under the sidebar */
+  padding: 20px;
+  padding-bottom: 120px; /* prevents overlap with player bar */
+  overflow-y: auto;
+}
+
+.main-content h2 {
+  margin-top: 0;
+}
+
+.main-content {
+  margin-left: 200px; /* keep it beside the sidebar */
+  padding: 20px;
+  padding-bottom: 160px; /* give space for the fixed player */
+  overflow-y: auto;
+}
+
+.main-content .card {
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  vertical-align: top;
+}
+
+.main {
+  flex: 1;
+  padding: 20px 30px;   /* extra horizontal padding */
+  overflow-y: auto;
+   /* ensure it's clear of sidebar */
+  box-sizing: border-box;
+}
+
+header h1 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.playlist {
+  margin-top: 10px;
+}
+
+.main-content {
+  margin-left: 200px;       /* stays clear of sidebar */
+  padding: 20px;
+  padding-bottom: 180px;    /* permanent space equal to player height */
+  overflow-y: auto;         /* allows scrolling */
+  box-sizing: border-box;
+  max-height: calc(100vh - 80px); /* keep content scrollable above player */
+}
